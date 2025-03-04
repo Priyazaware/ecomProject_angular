@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg p-4 rounded" style="max-width: 400px; width: 100%;">
+        <h2 class="text-center text-primary mb-4">Login</h2>
+        
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <!-- Mobile Number -->
+            <div class="form-group">
+                <label for="mobile" class="font-weight-bold">Mobile Number</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                    </div>
+                    <input type="number" id="mobile" formControlName="user_mobile" class="form-control" placeholder="Enter Mobile" required>
+                </div>
+            </div>
+            
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password" class="font-weight-bold">Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                    </div>
+                    <input type="password" id="password" formControlName="user_password" class="form-control" placeholder="Enter Password" required>
+                </div>
+            </div>
+            
+            <!-- Login Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-block">Login Now</button>
+            </div>
+        </form>
+        
+        <!-- Register Link -->
+        <div class="text-center mt-3">
+            <a routerLink="/register" class="text-info font-weight-bold">New User? Create an Account</a>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- Loader -->
+<div id="webloder" *ngIf="loading" class="text-center mt-3">
+    <i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i>
+</div>

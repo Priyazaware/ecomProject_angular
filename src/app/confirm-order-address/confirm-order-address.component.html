@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Confirm Address to Place Order</h1>
+
+    <form [formGroup]="addressForm" (ngSubmit)="placeOrder()" class="shadow-lg p-4 bg-white rounded">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Enter Area</label>
+                <input type="text" formControlName="area" class="form-control" placeholder="Area">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Enter City</label>
+                <input type="text" formControlName="city" class="form-control" placeholder="City">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Enter District</label>
+                <input type="text" formControlName="district" class="form-control" placeholder="District">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Enter State</label>
+                <input type="text" formControlName="state" class="form-control" placeholder="State">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Enter Pincode</label>
+                <input type="text" formControlName="pincode" class="form-control" placeholder="Pincode">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="fw-bold">Enter Country</label>
+                <input type="text" formControlName="country" class="form-control" placeholder="Country">
+            </div>
+            <div class="col-md-6 mb-4">
+                <label class="fw-bold mx-2">Select Payment Type</label>
+                <select formControlName="payment_type" class="form-select">
+                    <option value="COD">Cash on Delivery</option>
+                    <option value="Online">Online Payment</option>
+                </select>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success px-4 py-2">Place Order</button>
+        </div>
+    </form>
+</div>
+
+<app-footer></app-footer>

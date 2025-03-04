@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="container py-5">
+    <h1 class="text-center mb-4 fw-bold">Your Shopping Cart</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Cart Items -->
+            <div class="card mb-3 shadow-sm border-0 rounded p-3" *ngFor="let row of cart_data; let i=index">
+                <div class="row g-0 align-items-center">
+                    
+                    <!-- Product Image -->
+                    <div class="col-md-3 text-center">
+                        <img [src]="row.product_img" alt="{{row.product_name}}" class="img-fluid rounded" style="max-width: 120px;">
+                    </div>
+
+                    <!-- Product Details -->
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{row.product_name}}</h5>
+                            <p class="card-text text-success fs-5 fw-semibold">&#8377;{{row.price}}</p>
+                        </div>
+                    </div>
+
+                    <!-- Quantity & Remove Button -->
+                    <div class="col-md-4 text-center">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-dark btn-sm px-3" (click)="decqty(row.product_econ_cart_id)">-</button>
+                            <span class="mx-2 fs-5">{{row.qty}}</span>
+                            <button class="btn btn-outline-dark btn-sm px-3" (click)="incqty(row.product_econ_cart_id)">+</button>
+                        </div>
+                        <button class="btn btn-danger mt-2 btn-sm px-3" (click)="removeProduct(row.product_econ_cart_id)">
+                            <i class="fa-solid fa-trash"></i> Remove
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Summary Section -->
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 rounded">
+                <div class="card-body">
+                    <h3 class="fw-bold">Order Summary</h3>
+                    <hr>
+                    <p class="fs-5">Total Items: <span class="fw-bold">{{cart_data.length}}</span></p>
+                    <p class="fs-5">Total Price: <span class="text-success fw-bold">&#8377; {{calculateTotalPrice()}}</span></p>
+                    <button class="btn btn-primary w-100 mt-3 py-2" routerLink="/confirm_order">
+                        <i class="fa-solid fa-check"></i> Confirm Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- Loader -->
+<div id="webloder" *ngIf="loading">
+    <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+</div>

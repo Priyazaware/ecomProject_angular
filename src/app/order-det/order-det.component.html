@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <div class="shadow-lg rounded p-4 bg-white" *ngIf="orderinfo">
+        <!-- Invoice Header -->
+        <div class="row align-items-center bg-danger text-white p-3">
+            <div class="col-12 text-center">
+                <h1 class="fw-bold">Invoice</h1>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Billing Information -->
+            <div class="col-md-4">
+                <h5 class="text-secondary">Billed To:</h5>
+                <p class="fw-bold">
+                    {{orderinfo.area}}<br>
+                    {{orderinfo.city}}, {{orderinfo.district}}<br>
+                    {{orderinfo.state}}, {{orderinfo.country}} - {{orderinfo.pincode}}
+                </p>
+            </div>
+            <!-- Invoice Date -->
+            <div class="col-md-4 text-md-center">
+                <h5 class="text-secondary">Invoice Date:</h5>
+                <p class="fw-bold">{{orderinfo.entry_date}}</p>
+            </div>
+            <!-- Invoice Total -->
+            <div class="col-md-4 text-md-end">
+                <h5 class="text-secondary">Invoice Total:</h5>
+                <p class="fw-bold text-danger fs-4">&#8377; {{orderinfo.ttl_amount}}</p>
+            </div>
+        </div>
+
+        <hr class="bg-danger">
+
+        <!-- Order Products Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="text-center text-white bg-danger">
+                    <tr>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Rate</th>
+                        <th>Qty</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let row of orderproducts;">
+                        <td>
+                            <img [src]="row.product_img" width="60px" class="rounded">
+                        </td>
+                        <td class="fw-bold">{{row.product_name}}</td>
+                        <td class="text-success fw-bold">&#8377; {{row.price}}</td>
+                        <td class="fw-bold">{{row.qty}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

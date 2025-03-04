@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="container py-5" *ngIf="product_info">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded">
+                <div class="row g-0 align-items-center">
+                    <!-- Product Image Section -->
+                    <div class="col-md-6">
+                        <img [src]="product_info.product_img" alt="{{product_info.product_name}}" class="img-fluid rounded-start">
+                    </div>
+                    
+                    <!-- Product Details Section -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h1 class="card-title fw-bold">{{product_info.product_name}}</h1>
+                            <h4 class="text-muted">{{product_info.cat_name}}</h4>
+                            <h5 class="text-success fw-semibold">&#8377;{{product_info.price}}</h5>
+
+                            <!-- Add to Cart Button -->
+                            <button class="btn btn-primary mt-3 px-4 py-2" (click)="addcart()" *ngIf="product_info.cart=='No'">
+                                <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn btn-outline-dark mt-3 px-4 py-2" *ngIf="product_info.cart!='No'">
+                                <i class="fa-solid fa-check"></i> Added in Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+
+<app-footer></app-footer>
